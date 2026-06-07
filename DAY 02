@@ -1,0 +1,17 @@
+create database bank_det;
+ use bank_det;
+ create table account_detials( 
+ Cust_ID INT PRIMARY KEY, 
+ Cust_Name VARCHAR(100),
+ Bank_Balance DECIMAL(10,2), 
+ Active_Status VARCHAR(10) );
+
+insert into account_detials (Cust_ID,Cust_Name,Bank_Balance,Active_Status) values (1, 'Sindhu', 1000, 'Active'), (2, 'Bala', 450, 'Active'), (3, 'Krishnan', 0, 'Active'), (4, 'pavi', 300, 'Active'), (5, 'Priya', 2000, 'Active');
+
+select * from account_detials; 
+set sql_safe_updates = 0;
+
+UPDATE account_detials SET Active_Status = 'Inactive' WHERE Bank_Balance < 500;
+
+select * from account_detials;
+
