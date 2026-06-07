@@ -1,0 +1,28 @@
+show databases;
+use e_commerce;
+create table shopping(
+	product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(30),
+    price DECIMAL(10,2)
+);
+INSERT INTO shopping (product_name, price)
+VALUES
+('Laptop', 55000.00),
+('Mobile', 25000.00),
+('Headphones', 2000.00),
+('Keyboard', 1500.00),
+('Mouse', 800.00),
+('Monitor', 12000.00),
+('Printer', 10000.00);
+
+select * from shopping 
+where price =(select max(price) from shopping);
+
+select * from shopping 
+where price = (select min(price) from shopping);
+
+SELECT MAX(price) AS Highest_Price
+from shopping;
+
+select min(price) as Lowest_price
+from shopping
