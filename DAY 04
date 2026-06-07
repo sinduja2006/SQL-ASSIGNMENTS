@@ -1,0 +1,2 @@
+select upper('Sanjay Kumar')as up_txt;
+select rpad(lpad('KUMAR',7,'%'),9,'%') as res_name;
