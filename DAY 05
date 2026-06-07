@@ -1,0 +1,71 @@
+
+create database shopping;
+use shopping;
+create table shopping (
+	product_id int primary key,
+    product_name varchar(50),
+    price int
+    );
+    create table  orders (
+    product_id INT,
+    order_status VARCHAR(20),
+    shipping_detail VARCHAR(100)
+);
+INSERT INTO shopping (product_id, product_name, price) VALUES
+(101, 'Laptop', 55000),
+(102, 'Mobile', 25000),
+(103, 'Headphones', 2000),
+(104, 'Keyboard', 1500),
+(105, 'Mouse', 800);
+
+INSERT INTO orders (product_id, order_status, shipping_detail) VALUES
+(101, 'Delivered', 'Chennai'),
+(102, 'Shipped', 'Bangalore'),
+(103, 'Processing', 'Hyderabad'),
+(106, 'Delivered', 'Mumbai');
+
+select * from shopping;
+select * from orders;
+
+SELECT shopping.product_name,
+       shopping.product_id,
+       shopping.price,
+       orders.order_status,
+       orders.shipping_detail
+FROM shopping
+INNER JOIN orders
+ON shopping.product_id = orders.product_id;
+
+SELECT shopping.product_name,
+       shopping.product_id,
+       shopping.price,
+       orders.order_status,
+       orders.shipping_detail
+FROM shopping
+left JOIN orders
+ON shopping.product_id = orders.product_id;
+
+SELECT shopping.product_name,
+       shopping.product_id,
+       orders.order_status
+FROM shopping
+RIGHT JOIN orders
+ON shopping.product_id = orders.product_id;
+
+SELECT shopping.product_name,
+       shopping.product_id,
+       shopping.price,
+       orders.order_status,
+       orders.shipping_detail
+FROM shopping
+RIGHT JOIN orders
+ON shopping.product_id = orders.product_id
+union
+SELECT shopping.product_name,
+       shopping.product_id,
+       shopping.price,
+       orders.order_status,
+       orders.shipping_detail
+FROM shopping
+LEFT JOIN orders
+ON shopping.product_id = orders.product_id;
