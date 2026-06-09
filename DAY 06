@@ -1,0 +1,24 @@
+create students students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    subject VARCHAR(30),
+    mark INT,
+    course VARCHAR(30)
+);
+INSERT INTO students VALUES
+(1, 'Pavithra', 'Maths', 85, 'BCA'),
+(2, 'Sinduja', 'Science', 45, 'BSc'),
+(3, 'Bala', 'English', 72, 'BCA'),
+(4, 'Rasika', 'Maths', 38, 'BCom'),
+(5, 'Karthik', 'Science', 90, 'BSc'),
+(6, 'Divya', 'English', 55, 'BCA');
+
+SELECT name, subject, course FROM students
+WHERE mark > (SELECT AVG(mark)
+FROM students
+);
+
+SELECT * FROM students
+WHERE id IN ( SELECT id FROM students
+WHERE mark > 50
+);
